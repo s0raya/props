@@ -13,8 +13,9 @@ const Task = ({tasksList, deleteTask}) => {
     return ( 
         <>
             {tasksList.map(task => (
-                <span key={task.id} style={{ textDecoration: taskCompleted[task.id] ? 'line-through' : ''}}>
+                <span key={task.id} style={{ textDecoration: taskCompleted[task.id] ? 'line-through' : '', cursor: "pointer"}}>
                     <p onClick={() => handleTaskCompleted(task.id)}>{task.text}</p>
+                    {console.log(tasksList)}
                     <button onClick={() => deleteTask(task.id)}>Eliminar</button>
                 </span>
             ))}

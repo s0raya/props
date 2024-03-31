@@ -12,7 +12,7 @@ const App = () => {
 
   function addTask(taskText) {
     const newTask = {
-      id: tasks.id + 1,
+      id: tasks.length + 1,
       text: taskText,
       completed: false
     }
