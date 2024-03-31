@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 const Task = ({tasksList, deleteTask}) => {
-    const [taskCompleted, setTaskCompleted ] = useState(false);
+    const [taskCompleted, setTaskCompleted ] = useState({});
 
     const handleTaskCompleted = (taskId) => {
-        setTaskCompleted({
-            ...taskCompleted,
-            [taskId]: !taskCompleted[taskId]
-        });
+        setTaskCompleted(prevState => ({
+            ...prevState,
+            [taskId]: !prevState[taskId]
+        }));
     }
 
     return ( 
@@ -15,7 +15,6 @@ const Task = ({tasksList, deleteTask}) => {
             {tasksList.map(task => (
                 <span key={task.id} style={{ textDecoration: taskCompleted[task.id] ? 'line-through' : '', cursor: "pointer"}}>
                     <p onClick={() => handleTaskCompleted(task.id)}>{task.text}</p>
-                    {console.log(tasksList)}
                     <button onClick={() => deleteTask(task.id)}>Eliminar</button>
                 </span>
             ))}

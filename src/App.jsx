@@ -20,7 +20,12 @@ const App = () => {
   }
 
   const deleteTask = (taskId) => {
-    setTasks(tasks.filter(task => task.id !== taskId));
+    const newTasks = tasks.filter(task => task.id !== taskId);
+    let nextId = 1;
+    newTasks.map(task => {
+      task.id = nextId++;
+    });
+    setTasks(newTasks);
   };
 
   return (
