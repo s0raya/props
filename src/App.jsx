@@ -10,7 +10,7 @@ const App = () => {
     { id: 3, text: 'Hacer ejercicio', completed: false }
   ]);
 
-  function addTask(taskText) {
+  const addTask = (taskText) => {
     const newTask = {
       id: tasks.length + 1,
       text: taskText,
@@ -28,11 +28,21 @@ const App = () => {
     setTasks(newTasks);
   };
 
+  const toggleComplete = (taskId) => {
+    setTasks(tasks.map(task => task.id === taskId ? {...task, completed: !task.completed} : task))
+  }
+
   return (
     <>
       <h1>Lista de Tareas</h1>
       <AddTaskForm addTask = {addTask} />
-      <Task tasksList = {tasks} deleteTask={deleteTask}/>
+      <ul>
+        <Task 
+          tasksList = {tasks} 
+          deleteTask={deleteTask} 
+          toggleComplete={toggleComplete} 
+        />
+      </ul>
     </>
   );
 };

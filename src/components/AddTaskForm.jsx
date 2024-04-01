@@ -6,17 +6,16 @@ const AddTaskForm = ({addTask}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        //if(!taskText.trim()) return;
         addTask(taskText);
         setTaskText('');
     }
 
     return (
-        <>
         <form onSubmit={handleSubmit}>
             <input type="text" placeholder="Nueva tarea" id="task" value={taskText} onChange={e => setTaskText(e.target.value)}/>
             <button type="submit">Agregar</button>
         </form>
-        </>
     )
 }
 
